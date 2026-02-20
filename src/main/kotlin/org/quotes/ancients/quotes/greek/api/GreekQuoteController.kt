@@ -1,7 +1,6 @@
-package org.quotes.ancients.quotes.greek.api.dto
+package org.quotes.ancients.quotes.greek.api
 
-import org.quotes.ancients.quotes.greek.api.GreekQuoteDto
-import org.quotes.ancients.quotes.greek.domain.GreekQuote
+import org.quotes.ancients.quotes.greek.api.dto.GreekQuoteDto
 import org.quotes.ancients.quotes.greek.service.GreekQuoteService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping

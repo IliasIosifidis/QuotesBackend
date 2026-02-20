@@ -1,4 +1,4 @@
-package org.quotes.ancients.quotes.greek.api
+package org.quotes.ancients.quotes.greek.api.dto
 
 data class GreekQuoteDto(
     val id: Long,

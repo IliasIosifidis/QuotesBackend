@@ -1,6 +1,6 @@
 package org.quotes.ancients.quotes.greek.repo
 
-import org.quotes.ancients.quotes.greek.api.GreekQuoteDto
+import org.quotes.ancients.quotes.greek.api.dto.GreekQuoteDto
 import org.quotes.ancients.quotes.greek.domain.GreekQuote
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query

@@ -1,8 +1,6 @@
 package org.quotes.ancients.quotes.greek.service
 
-import org.quotes.ancients.quotes.greek.api.GreekQuoteDto
-import org.quotes.ancients.quotes.greek.domain.GreekQuote
-import org.springframework.stereotype.Service
+import org.quotes.ancients.quotes.greek.api.dto.GreekQuoteDto
 
 interface GreekQuoteService {
     fun getAll(): List<GreekQuoteDto>

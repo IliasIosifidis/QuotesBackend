@@ -1,6 +1,5 @@
 package org.quotes.ancients.quotes.greek.api.dto
 
-import org.quotes.ancients.quotes.greek.api.dto.GreekQuoteDto
 import org.quotes.ancients.quotes.greek.domain.GreekQuote
 
 fun GreekQuote.toDto(): GreekQuoteDto = 

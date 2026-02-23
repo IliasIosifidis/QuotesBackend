@@ -18,6 +18,11 @@ class SecurityConfig {
             .httpBasic {  }
             .authorizeHttpRequests { auth ->
                 auth
+                    // User Administration
+                    .requestMatchers("/error").permitAll()
+                    .requestMatchers("/api/auth/**").permitAll()
+                    .requestMatchers(HttpMethod.DELETE, "/api/auth/users/**").hasAnyRole("CREATOR")
+                    // Quotes
                     .requestMatchers(HttpMethod.GET, "/api/user-quotes/**").permitAll()
                     .requestMatchers(HttpMethod.POST, "/api/user-quotes/**").authenticated()
                     .requestMatchers(HttpMethod.DELETE, "/api/user-quotes/**").hasAnyRole("ADMIN","CREATOR")

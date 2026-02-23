@@ -49,4 +49,47 @@ class UserService(
         user.role = newRole
         repo.save(user)
     }
+
+    @Transactional
+    fun deleteUser(targetUserId: Long, actorUsername: String){
+        val actor = repo.findByUsername(actorUsername) ?: error("Actor not found")
+
+        if (actor.role != Role.CREATOR) error("Only THE creator can delete")
+
+        val target = repo.findById(targetUserId)
+            .orElseThrow { error("User not found") }
+
+        if (target.role == Role.CREATOR) error("THE Creator cannot be deleter")
+
+        repo.delete(target)
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

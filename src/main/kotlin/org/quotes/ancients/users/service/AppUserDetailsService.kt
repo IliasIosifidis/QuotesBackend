@@ -15,6 +15,11 @@ class AppUserDetailsService(
     override fun loadUserByUsername(username: String): UserDetails {
         val u = repo.findByUsername(username) ?: throw UsernameNotFoundException("user not found")
         val authorities = listOf(SimpleGrantedAuthority("ROLE_${u.role.name}"))
-        return User(u.username, u.passwordHash ?: "", u.enabled, true, true, true, authorities)
+        return User(
+            u.username,
+            u.passwordHash ?: throw IllegalStateException("password is null for user"),
+            u.enabled,
+            true, true, true,
+            authorities)
     }
 }

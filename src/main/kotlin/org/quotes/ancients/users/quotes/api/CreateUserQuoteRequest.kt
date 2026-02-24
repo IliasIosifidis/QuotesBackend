@@ -1,4 +1,4 @@
-package org.quotes.ancients.users.api
+package org.quotes.ancients.users.quotes.api
 
 data class CreateUserQuoteRequest(
     val title: String,

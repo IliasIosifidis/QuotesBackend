@@ -1,8 +1,8 @@
 package org.quotes.ancients.comon.config
 
-import org.quotes.ancients.users.domain.AppUser
-import org.quotes.ancients.users.domain.Role
-import org.quotes.ancients.users.repo.AppUserRepository
+import org.quotes.ancients.users.users.domain.AppUser
+import org.quotes.ancients.users.users.domain.Role
+import org.quotes.ancients.users.users.repo.AppUserRepository
 import org.springframework.boot.CommandLineRunner
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

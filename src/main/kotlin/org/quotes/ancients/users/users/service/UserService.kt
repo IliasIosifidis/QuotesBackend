@@ -1,9 +1,9 @@
-package org.quotes.ancients.users.service
+package org.quotes.ancients.users.users.service
 
 import jakarta.transaction.Transactional
-import org.quotes.ancients.users.domain.AppUser
-import org.quotes.ancients.users.domain.Role
-import org.quotes.ancients.users.repo.AppUserRepository
+import org.quotes.ancients.users.users.domain.AppUser
+import org.quotes.ancients.users.users.domain.Role
+import org.quotes.ancients.users.users.repo.AppUserRepository
 import org.springframework.stereotype.Service
 import org.springframework.security.crypto.password.PasswordEncoder
 

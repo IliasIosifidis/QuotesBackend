@@ -1,9 +1,9 @@
-package org.quotes.ancients.users.service
+package org.quotes.ancients.users.quotes.service
 
 import jakarta.transaction.Transactional
-import org.quotes.ancients.users.api.CreateUserQuoteRequest
-import org.quotes.ancients.users.domain.UserQuote
-import org.quotes.ancients.users.repo.UserQuoteRepository
+import org.quotes.ancients.users.quotes.api.CreateUserQuoteRequest
+import org.quotes.ancients.users.quotes.domain.UserQuote
+import org.quotes.ancients.users.quotes.repo.UserQuoteRepository
 import org.springframework.stereotype.Service
 
 @Service
@@ -19,13 +19,8 @@ class UserQuoteService(
             quote = req.quote.trim(),
             score = 0,
         )
-
-        try {
-            return repo.save(entity)
-        } catch (e: Exception){
-            throw IllegalStateException("You can only post once every 6 hours")
-        }
+        return repo.save(entity)
     }
 
-    fun list() = repo.findAll()
+    fun listOfQuotes() = repo.findAll()
 }

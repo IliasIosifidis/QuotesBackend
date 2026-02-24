@@ -1,6 +1,6 @@
-package org.quotes.ancients.users.service
+package org.quotes.ancients.users.users.service
 
-import org.quotes.ancients.users.repo.AppUserRepository
+import org.quotes.ancients.users.users.repo.AppUserRepository
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails

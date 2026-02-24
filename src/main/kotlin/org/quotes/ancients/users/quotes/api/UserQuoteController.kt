@@ -1,7 +1,6 @@
-package org.quotes.ancients.users.api
+package org.quotes.ancients.users.quotes.api
 
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication
-import org.quotes.ancients.users.service.UserQuoteService
+import org.quotes.ancients.users.quotes.service.UserQuoteService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -16,7 +15,7 @@ class UserQuoteController(
 ) {
 
     @GetMapping
-    fun list() = service.list()
+    fun list() = service.listOfQuotes()
 
     @PostMapping
     fun create(

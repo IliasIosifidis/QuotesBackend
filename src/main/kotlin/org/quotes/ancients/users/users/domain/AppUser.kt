@@ -1,7 +1,6 @@
-package org.quotes.ancients.users.domain
+package org.quotes.ancients.users.users.domain
 
 import jakarta.persistence.*
-import org.quotes.ancients.users.domain.Role
 import java.time.Instant
 
 @Entity

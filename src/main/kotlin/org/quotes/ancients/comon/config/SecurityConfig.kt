@@ -1,21 +1,26 @@
 package org.quotes.ancients.comon.config
 
+import org.quotes.ancients.comon.util.JwtService
+import org.quotes.ancients.users.users.api.JwtAuthFilter
+import org.quotes.ancients.users.users.service.AppUserDetailsService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.web.SecurityFilterChain
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 
 @Configuration
-class SecurityConfig {
-
+class SecurityConfig(
+    private val jwtService: JwtService,
+    private val userDetailsService: AppUserDetailsService
+) {
     @Bean
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
         http
             .csrf { it.disable() }
             .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
-            .httpBasic {  }
             .authorizeHttpRequests { auth ->
                 auth
                     // User Administration
@@ -28,6 +33,10 @@ class SecurityConfig {
                     .requestMatchers(HttpMethod.DELETE, "/api/user-quotes/**").hasAnyRole("ADMIN","CREATOR")
                     .anyRequest().denyAll()
             }
+            .addFilterBefore(
+                JwtAuthFilter(jwtService, userDetailsService),
+                UsernamePasswordAuthenticationFilter::class.java)
+
         return http.build()
     }
 }

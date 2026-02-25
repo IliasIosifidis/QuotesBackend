@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 
 interface UserQuoteRepository: JpaRepository<UserQuote, Long> {
-    fun findAllOrderByCreatedAtDesc(pageable: Pageable): Page<UserQuote>
+    fun findAllByOrderByCreatedAtDesc(pageable: Pageable): Page<UserQuote>
 }

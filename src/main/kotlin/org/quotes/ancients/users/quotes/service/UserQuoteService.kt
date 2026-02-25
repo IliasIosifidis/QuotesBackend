@@ -27,6 +27,6 @@ class UserQuoteService(
     fun list(page: Int, size: Int): Page<UserQuote> {
         val safeSize = size.coerceIn(1,50)
         val safePage = page.coerceAtLeast(0)
-        return repo.findAllOrderByCreatedAtDesc(PageRequest.of(safePage, safeSize))
+        return repo.findAllByOrderByCreatedAtDesc(PageRequest.of(safePage, safeSize))
     }
 }

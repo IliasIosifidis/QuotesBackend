@@ -25,7 +25,7 @@ class AppUser (
     var passwordHash: String?,
 
     @Enumerated(EnumType.STRING)
-    @Column
+    @Column(nullable = false)
     var role: Role = Role.USER,
 
     @Column(nullable = false)

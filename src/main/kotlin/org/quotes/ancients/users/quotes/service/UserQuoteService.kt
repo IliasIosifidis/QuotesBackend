@@ -4,6 +4,8 @@ import jakarta.transaction.Transactional
 import org.quotes.ancients.users.quotes.api.CreateUserQuoteRequest
 import org.quotes.ancients.users.quotes.domain.UserQuote
 import org.quotes.ancients.users.quotes.repo.UserQuoteRepository
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service
 
 @Service
@@ -22,5 +24,9 @@ class UserQuoteService(
         return repo.save(entity)
     }
 
-    fun listOfQuotes() = repo.findAll()
+    fun list(page: Int, size: Int): Page<UserQuote> {
+        val safeSize = size.coerceIn(1,50)
+        val safePage = page.coerceAtLeast(0)
+        return repo.findAllOrderByCreatedAtDesc(PageRequest.of(safePage, safeSize))
+    }
 }

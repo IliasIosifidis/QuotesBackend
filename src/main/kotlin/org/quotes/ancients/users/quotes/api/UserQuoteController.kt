@@ -1,11 +1,9 @@
 package org.quotes.ancients.users.quotes.api
 
+import org.quotes.ancients.users.quotes.domain.UserQuote
 import org.quotes.ancients.users.quotes.service.UserQuoteService
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.data.domain.Page
+import org.springframework.web.bind.annotation.*
 import java.security.Principal
 
 @RestController
@@ -15,7 +13,10 @@ class UserQuoteController(
 ) {
 
     @GetMapping
-    fun list() = service.listOfQuotes()
+    fun list(
+        @RequestParam(defaultValue = "0") page: Int,
+        @RequestParam(defaultValue = "20") size: Int
+    ): Page<UserQuote> = service.list(page,size)
 
     @PostMapping
     fun create(

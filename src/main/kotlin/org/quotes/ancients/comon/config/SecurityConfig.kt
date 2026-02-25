@@ -23,6 +23,10 @@ class SecurityConfig(
             .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
             .authorizeHttpRequests { auth ->
                 auth
+                    // Public APIs
+                    .requestMatchers("/api/latins/**").permitAll()
+                    .requestMatchers("/api/chinese/**").permitAll()
+                    .requestMatchers("/api/greeks/**").permitAll()
                     // User Administration
                     .requestMatchers("/error").permitAll()
                     .requestMatchers("/api/auth/**").permitAll()

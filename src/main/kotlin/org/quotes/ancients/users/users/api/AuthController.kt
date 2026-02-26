@@ -1,6 +1,8 @@
 package org.quotes.ancients.users.users.api
 
 import org.quotes.ancients.comon.util.JwtService
+import org.quotes.ancients.users.users.api.dto.UserResponseDto
+import org.quotes.ancients.users.users.api.dto.toDto
 import org.quotes.ancients.users.users.service.RegisterRequest
 import org.quotes.ancients.users.users.service.UserService
 import org.springframework.security.authentication.AuthenticationManager
@@ -16,7 +18,8 @@ class AuthController(
     private val jwtService: JwtService
 ) {
     @PostMapping("/register")
-    fun register(@RequestBody req: RegisterRequest) = userService.register(req)
+    fun register(@RequestBody req: RegisterRequest): UserResponseDto =
+        userService.register(req).toDto()
 
     @PostMapping("/login")
     fun login(@RequestBody req: LoginRequest): LoginResponse {

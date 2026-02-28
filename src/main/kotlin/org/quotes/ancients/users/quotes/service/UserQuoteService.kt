@@ -6,7 +6,9 @@ import org.quotes.ancients.users.quotes.domain.UserQuote
 import org.quotes.ancients.users.quotes.repo.UserQuoteRepository
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
+import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
+import org.springframework.web.server.ResponseStatusException
 
 @Service
 class UserQuoteService(
@@ -28,5 +30,13 @@ class UserQuoteService(
         val safeSize = size.coerceIn(1,50)
         val safePage = page.coerceAtLeast(0)
         return repo.findAllByOrderByCreatedAtDesc(PageRequest.of(safePage, safeSize))
+    }
+
+    @Transactional
+    fun deleteQuote(quoteId: Long){
+        val quote = repo.findById(quoteId)
+            .orElseThrow { ResponseStatusException(HttpStatus.NOT_FOUND, "Quote Not Found") }
+
+        repo.delete(quote)
     }
 }

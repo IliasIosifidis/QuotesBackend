@@ -23,4 +23,9 @@ class UserQuoteController(
         principal: Principal,
         @RequestBody req: CreateUserQuoteRequest
     ) = service.create(principal.name, req)
+
+    @DeleteMapping("/{quoteId}")
+    fun delete(
+        @PathVariable quoteId: Long
+    ) = service.deleteQuote(quoteId)
 }

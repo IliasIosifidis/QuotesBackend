@@ -38,3 +38,34 @@ out/
 
 ### Kotlin ###
 .kotlin
+# =========================
+# Environment variables
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Spring local configs
+# =========================
+application-local.properties
+application-local.yml
+src/main/resources/application-local.properties
+src/main/resources/application-local.yml
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# IntelliJ
+# =========================
+.idea/
+*.iml
+
+# =========================
+# Build output
+# =========================
+build/
+out/

@@ -13,9 +13,9 @@ class CreatorBootstrap {
 
     @Bean
     fun seedCreator(repo: AppUserRepository, encoder: PasswordEncoder) = CommandLineRunner {
-        val creatorUsername = System.getenv("CREATOR_USERNAME") ?: "ilias"
-        val creatorEmail = System.getenv("CREATOR_EMAIL") ?: "iosifidis90@gmail.com"
-        val creatorPassword = System.getenv("CREATOR_PASSWORD") ?: "1990"
+        val creatorUsername = System.getenv("CREATOR_USERNAME") ?: "creator"
+        val creatorEmail = System.getenv("CREATOR_EMAIL") ?: "creator@god.com"
+        val creatorPassword = System.getenv("CREATOR_PASSWORD") ?: throw IllegalStateException("CREATOR_PASSWORD env var is required")
 
         val existing = repo.findByUsername(creatorUsername)
         if (existing == null) {

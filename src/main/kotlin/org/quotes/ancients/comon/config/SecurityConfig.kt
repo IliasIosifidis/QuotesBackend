@@ -30,11 +30,11 @@ class SecurityConfig(
                     // User Administration
                     .requestMatchers("/error").permitAll()
                     .requestMatchers("/api/auth/**").permitAll()
-                    .requestMatchers(HttpMethod.DELETE, "/api/auth/users/**").hasAnyRole("CREATOR")
+                    .requestMatchers(HttpMethod.DELETE, "/api/auth/users/**").hasAnyRole("ADMIN","CREATOR")
                     // Quotes
                     .requestMatchers(HttpMethod.GET, "/api/user-quotes/**").permitAll()
                     .requestMatchers(HttpMethod.POST, "/api/user-quotes/**").authenticated()
-                    .requestMatchers(HttpMethod.DELETE, "/api/user-quotes/**").hasAnyRole("ADMIN")
+                    .requestMatchers(HttpMethod.DELETE, "/api/user-quotes/**").hasAnyRole("ADMIN", "CREATOR")
                     .anyRequest().denyAll()
             }
             .addFilterBefore(

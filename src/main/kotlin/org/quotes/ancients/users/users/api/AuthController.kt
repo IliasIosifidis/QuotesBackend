@@ -17,6 +17,10 @@ class AuthController(
     private val authManager: AuthenticationManager,
     private val jwtService: JwtService
 ) {
+    @GetMapping("/me")
+    fun me(principal: Principal): UserResponseDto =
+        userService.getByUsername(principal.name)
+
     @PostMapping("/register")
     fun register(@RequestBody req: RegisterRequest): UserResponseDto =
         userService.register(req).toDto()
@@ -26,7 +30,7 @@ class AuthController(
         authManager.authenticate(
             UsernamePasswordAuthenticationToken(req.username, req.password)
         )
-        return LoginResponse(jwtService.issue(req.username))
+        return LoginResponse(token = jwtService.issue(req.username))
     }
 
     @DeleteMapping("/users/{id}")

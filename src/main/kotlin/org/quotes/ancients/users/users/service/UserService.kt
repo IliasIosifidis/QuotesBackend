@@ -1,11 +1,15 @@
 package org.quotes.ancients.users.users.service
 
 import jakarta.transaction.Transactional
+import org.quotes.ancients.main
+import org.quotes.ancients.users.users.api.dto.UserResponseDto
 import org.quotes.ancients.users.users.domain.AppUser
 import org.quotes.ancients.users.users.domain.Role
 import org.quotes.ancients.users.users.repo.AppUserRepository
+import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 import org.springframework.security.crypto.password.PasswordEncoder
+import org.springframework.web.server.ResponseStatusException
 
 data class RegisterRequest(
     val username: String,
@@ -62,6 +66,18 @@ class UserService(
         if (target.role == Role.CREATOR) error("THE Creator cannot be deleter")
 
         repo.delete(target)
+    }
+
+    fun getByUsername(name: String): UserResponseDto {
+        val user = repo.findByUsername(name)
+            ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "User not found")
+
+        return UserResponseDto(
+            id = user.id,
+            username = user.username,
+            email = user.email,
+            role = user.role.name
+        )
     }
 }
 

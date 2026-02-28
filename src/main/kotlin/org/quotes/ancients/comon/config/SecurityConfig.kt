@@ -29,7 +29,9 @@ class SecurityConfig(
                     .requestMatchers("/api/greeks/**").permitAll()
                     // User Administration
                     .requestMatchers("/error").permitAll()
-                    .requestMatchers("/api/auth/**").permitAll()
+                    .requestMatchers("/api/auth/login").permitAll()
+                    .requestMatchers("/api/auth/register").permitAll()
+                    .requestMatchers("/api/auth/me").authenticated()
                     .requestMatchers(HttpMethod.DELETE, "/api/auth/users/**").hasAnyRole("ADMIN","CREATOR")
                     // Quotes
                     .requestMatchers(HttpMethod.GET, "/api/user-quotes/**").permitAll()

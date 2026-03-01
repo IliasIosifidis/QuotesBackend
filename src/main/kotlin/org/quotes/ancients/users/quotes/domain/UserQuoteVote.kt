@@ -17,6 +17,6 @@ class UserQuoteVote(
     @Column(name = "quote_id", nullable = false)
     var quoteId: Long,
 
-    @Column(nullable = false, columnDefinition = "TINYINT")
+    @Column(nullable = false)
     var value: Byte
 )

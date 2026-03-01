@@ -18,5 +18,5 @@ class UserQuoteVote(
     var quoteId: Long,
 
     @Column(nullable = false)
-    var value: Byte
+    var value: Int
 )

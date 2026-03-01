@@ -37,6 +37,9 @@ class SecurityConfig(
                     .requestMatchers(HttpMethod.GET, "/api/user-quotes/**").permitAll()
                     .requestMatchers(HttpMethod.POST, "/api/user-quotes/**").authenticated()
                     .requestMatchers(HttpMethod.DELETE, "/api/user-quotes/**").hasAnyRole("ADMIN", "CREATOR")
+                    // Vote
+                    .requestMatchers(HttpMethod.POST, "/api/user-quotes/*/upvote").authenticated()
+                    .requestMatchers(HttpMethod.POST, "/api/user-quotes/*/downvote").authenticated()
                     .anyRequest().denyAll()
             }
             .addFilterBefore(
